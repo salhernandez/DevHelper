@@ -12,8 +12,10 @@ for (var i=0, max=all.length; i < max; i++) {
     // console.log(all[i]);
 
     // console.log(all[i].getAttribute("href"));
+    var theElement = all[i];
     var a = String(all[i].getAttribute("href"));
     if(a.includes("stackoverflow.com") && !a.includes("webcache")){
         console.log(a);
+        theElement.href = "lel";
     }
 }
