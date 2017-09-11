@@ -3,7 +3,7 @@ chrome.runtime.sendMessage(document.title);
 console.log(document);
 
 //get all the tags
-var all = document.getElementsByTagName("*");
+var all = document.getElementsByTagName("a");
 // console.log(all);
 
 //cycle through all tags
