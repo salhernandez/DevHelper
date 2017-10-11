@@ -1,6 +1,6 @@
 // send the page title as a chrome message
 chrome.runtime.sendMessage(document.title);
-console.log(document);
+// console.log(document);
 
 //get all the tags
 var all = document.getElementsByTagName("a");
@@ -14,8 +14,14 @@ for (var i=0, max=all.length; i < max; i++) {
     // console.log(all[i].getAttribute("href"));
     var theElement = all[i];
     var a = String(all[i].getAttribute("href"));
+    // console.log(a)
+
     if(a.includes("stackoverflow.com") && !a.includes("webcache")){
+
+        //replaces the element value
+        //theElement.href = "lel";
+
+        //a link that has stackoverflow in it
         console.log(a);
-        theElement.href = "lel";
     }
 }
