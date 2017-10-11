@@ -28,11 +28,45 @@ for (var i=0, max=all.length; i < max; i++) {
         //make request with the stackoverflow link
         var request = makeHttpObject();
         request.open("GET", a, true);
-        request.send();
+        request.send(null);
         request.onreadystatechange = function() {
           if (request.readyState == 4){
-            console.log(request.responseText);
+            // console.log(request.responseText);
+            var stackOvr = request.responseText;
 
+            // console.log(stackOvr);
+
+            var xmlString = stackOvr
+              , parser = new DOMParser()
+              , doc = parser.parseFromString(xmlString, "text/html");
+            //doc.firstChild // => <div id="foo">...
+            //doc.firstChild.firstChild // => <a href="#">...
+            console.log("THIS IS THE INFO: ",doc);
+
+            // //converst html string to dom
+            // var xmlString = stackOvr
+            // , parser = new DOMParser()
+            // , doc = parser.parseFromString(xmlString, "text/xml");
+            // // doc.firstChild // => <div id="foo">...
+            // // doc.firstChild.firstChild // => <a href="#">...
+            //
+            // // var getAccepted = stackOvr.getElementsByTagName("div");
+            //
+            // //get all div tags from stack overflow
+            // var allStack = doc.getElementsByTagName("*");
+            // //looks for the accepted answer
+            // for (var i=0, max=allStack.length; i < max; i++) {
+            //     var theElementStack = allStack[i];
+            //     console.log(theElementStack);
+            //
+            //     // try{
+            //     // var aStack = String(all[i].getAttribute("id"));
+            //     // console.log("ID NAME", aStack);
+            //     // }
+            //     // catch(e){
+            //     //
+            //     // }
+            //   }
             console.log("=========================================================");
           }
         };
