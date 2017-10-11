@@ -20,9 +20,22 @@ for (var i=0, max=all.length; i < max; i++) {
 
         //replaces the element value
         //theElement.href = "lel";
+        console.log("=========================================================");
 
         //a link that has stackoverflow in it
         console.log(a);
+
+        //make request with the stackoverflow link
+        var request = makeHttpObject();
+        request.open("GET", a, true);
+        request.send();
+        request.onreadystatechange = function() {
+          if (request.readyState == 4){
+            console.log(request.responseText);
+
+            console.log("=========================================================");
+          }
+        };
     }
 }
 
@@ -37,12 +50,3 @@ function makeHttpObject() {
 
   throw new Error("Could not create HTTP request object.");
 }
-
-var request = makeHttpObject();
-request.open("GET", "https://www.google.com/", true);
-request.send();
-request.onreadystatechange = function() {
-  if (request.readyState == 4){
-    console.log(request.responseText);
-  }
-};
