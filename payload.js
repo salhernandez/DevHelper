@@ -48,7 +48,11 @@ function makeARequest(url){
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         // console.log(xhr.responseText);
-        console.log("call is back");
+        //create DOM from text
+        let frag = document.createRange().createContextualFragment(xhr.responseText);
+        // console.log(frag);
+        getData(frag);
+
         console.log("=========================================================");
       } else {
         console.error(xhr.statusText);
@@ -59,6 +63,22 @@ function makeARequest(url){
     console.error(xhr.statusText);
   };
   xhr.send(null);
+}
+
+function getData(aDom){
+  let all = document.getElementsByTagName("*");
+  // console.log(all);
+
+  //cycle through all tags
+  for (var i=0, max=all.length; i < max; i++) {
+      // Do something with the element here
+      console.log(all[i]);
+      // console.log(all[i].getAttribute("href"));
+      var theElement = all[i];
+      // var a = String(all[i].getAttribute("href"));
+      // console.log(a)
+
+    }
 }
 
 //makes request
