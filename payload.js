@@ -22,7 +22,7 @@ for (var i=0, max=all.length; i < max; i++) {
         //theElement.href = "lel";
         console.log("=========================================================");
         makeARequest(a);
-        break;
+        // break;
         // //make request with the stackoverflow link
         // var request = makeHttpObject();
         // request.open("GET", a, true);
@@ -75,14 +75,16 @@ function getData(theResponse){
   //gets div based on the class name
   let divs = doc.body.getElementsByClassName('answer accepted-answer');
 
-  console.log(divs);
+  // console.log(divs);
 
-  //cycle through all tags
+  //if a link finds the answer accepted-answer class then that means that the link
+  //does have a solution
   for (var i=0, max=divs.length; i < max; i++) {
       // Do something with the element here
       // console.log(all[i]);
       // console.log(all[i].getAttribute("href"));
       let theElement = divs[i];
+      //shows the div for the selected answer
       console.log(theElement);
       // let a = String(all[i].getAttribute("class"));
       // console.log(a)
