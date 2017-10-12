@@ -67,18 +67,23 @@ function makeARequest(url){
 }
 
 function getData(theResponse){
-  let frag = document.createRange().createContextualFragment(theResponse);
 
-  // let all = frag.getElementsByTagName("div");
-  console.log(frag);
+  //create DOM
+  let doc = new DOMParser().parseFromString(theResponse, 'text/html');
+  let div = doc.body.firstChild;
+
+  //gets div based on the class name
+  let divs = doc.body.getElementsByClassName('answer accepted-answer');
+
+  console.log(divs);
 
   //cycle through all tags
-  for (var i=0, max=all.length; i < max; i++) {
+  for (var i=0, max=divs.length; i < max; i++) {
       // Do something with the element here
       // console.log(all[i]);
       // console.log(all[i].getAttribute("href"));
-      let theElement = all[i];
-      // console.log(theElement);
+      let theElement = divs[i];
+      console.log(theElement);
       // let a = String(all[i].getAttribute("class"));
       // console.log(a)
     }
