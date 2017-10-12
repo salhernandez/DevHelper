@@ -21,56 +21,44 @@ for (var i=0, max=all.length; i < max; i++) {
         //replaces the element value
         //theElement.href = "lel";
         console.log("=========================================================");
-
-        //a link that has stackoverflow in it
-        console.log(a);
-
-        //make request with the stackoverflow link
-        var request = makeHttpObject();
-        request.open("GET", a, true);
-        request.send(null);
-        request.onreadystatechange = function() {
-          if (request.readyState == 4){
-            // console.log(request.responseText);
-            var stackOvr = request.responseText;
-
-            // console.log(stackOvr);
-
-            var xmlString = stackOvr
-              , parser = new DOMParser()
-              , doc = parser.parseFromString(xmlString, "text/html");
-            //doc.firstChild // => <div id="foo">...
-            //doc.firstChild.firstChild // => <a href="#">...
-            console.log("THIS IS THE INFO: ",doc);
-
-            // //converst html string to dom
-            // var xmlString = stackOvr
-            // , parser = new DOMParser()
-            // , doc = parser.parseFromString(xmlString, "text/xml");
-            // // doc.firstChild // => <div id="foo">...
-            // // doc.firstChild.firstChild // => <a href="#">...
-            //
-            // // var getAccepted = stackOvr.getElementsByTagName("div");
-            //
-            // //get all div tags from stack overflow
-            // var allStack = doc.getElementsByTagName("*");
-            // //looks for the accepted answer
-            // for (var i=0, max=allStack.length; i < max; i++) {
-            //     var theElementStack = allStack[i];
-            //     console.log(theElementStack);
-            //
-            //     // try{
-            //     // var aStack = String(all[i].getAttribute("id"));
-            //     // console.log("ID NAME", aStack);
-            //     // }
-            //     // catch(e){
-            //     //
-            //     // }
-            //   }
-            console.log("=========================================================");
-          }
-        };
+        makeARequest(a);
+        // //make request with the stackoverflow link
+        // var request = makeHttpObject();
+        // request.open("GET", a, true);
+        // request.send(null);
+        // request.onreadystatechange = function() {
+        //   if (request.readyState == 4){
+        //     // console.log(request.responseText);
+        //     var stackOvr = request.responseText;
+        //     console.log("RESPONSE: ", stackOvr);
+        //
+        //     console.log("=========================================================");
+        //   }
+        // };
     }
+}
+
+function makeARequest(url){
+  //a link that has stackoverflow in it
+  console.log("STACK OVERFLOW LINK: ",url);
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", a, true);
+  xhr.onload = function (e) {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // console.log(xhr.responseText);
+        console.log("call is back");
+        console.log("=========================================================");
+      } else {
+        console.error(xhr.statusText);
+      }
+    }
+  };
+  xhr.onerror = function (e) {
+    console.error(xhr.statusText);
+  };
+  xhr.send(null);
 }
 
 //makes request
