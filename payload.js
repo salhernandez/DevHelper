@@ -9,11 +9,20 @@ chrome.runtime.sendMessage(document.title);
 var all = document.getElementsByTagName("a");
 // console.log(all);
 
+//creates a new image element with a checkmark icon
+var x = document.createElement("IMG");
+    x.setAttribute("src", "http://www.clker.com/cliparts/e/3/9/7/1245686792938124914raemi_Check_mark.svg.hi.png");
+    x.setAttribute("width", "304");
+    x.setAttribute("height", "228");
+    x.setAttribute("alt", "This is a Checkmark");
+    document.body.appendChild(x);
+
 //cycle through all tags
 for (var i=0, max=all.length; i < max; i++) {
     // Do something with the element here
     // console.log(all[i]);
 
+    //theElement.href = "lel";
     // console.log(all[i].getAttribute("href"));
     var theElement = all[i];
     var a = String(all[i].getAttribute("href"));
