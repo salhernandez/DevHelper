@@ -1,3 +1,6 @@
+//ToDo: create an associate array to store links and booleans to false,
+// set it so that if the link returns something, then the it has an answer
+
 // send the page title as a chrome message
 chrome.runtime.sendMessage(document.title);
 // console.log(document);
