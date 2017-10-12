@@ -22,6 +22,7 @@ for (var i=0, max=all.length; i < max; i++) {
         //theElement.href = "lel";
         console.log("=========================================================");
         makeARequest(a);
+        break;
         // //make request with the stackoverflow link
         // var request = makeHttpObject();
         // request.open("GET", a, true);
@@ -48,10 +49,10 @@ function makeARequest(url){
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         // console.log(xhr.responseText);
+        // console.log(xhr.responseText);
         //create DOM from text
-        let frag = document.createRange().createContextualFragment(xhr.responseText);
         // console.log(frag);
-        getData(frag);
+        getData(xhr.responseText);
 
         console.log("=========================================================");
       } else {
@@ -65,19 +66,21 @@ function makeARequest(url){
   xhr.send(null);
 }
 
-function getData(aDom){
-  let all = document.getElementsByTagName("*");
-  // console.log(all);
+function getData(theResponse){
+  let frag = document.createRange().createContextualFragment(theResponse);
+
+  // let all = frag.getElementsByTagName("div");
+  console.log(frag);
 
   //cycle through all tags
   for (var i=0, max=all.length; i < max; i++) {
       // Do something with the element here
-      console.log(all[i]);
+      // console.log(all[i]);
       // console.log(all[i].getAttribute("href"));
-      var theElement = all[i];
-      // var a = String(all[i].getAttribute("href"));
+      let theElement = all[i];
+      // console.log(theElement);
+      // let a = String(all[i].getAttribute("class"));
       // console.log(a)
-
     }
 }
 
