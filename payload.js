@@ -10,50 +10,27 @@ var all = document.getElementsByTagName("a");
 
 //cycle through all tags
 for (var i=0, max=all.length; i < max; i++) {
-    // Do something with the element here
-    // console.log(all[i]);
 
-    //theElement.href = "lel";
-    // console.log(all[i].getAttribute("href"));
-    var theElement = all[i];
-    var a = String(all[i].getAttribute("href"));
+    let theElement = all[i];
+    let a = String(all[i].getAttribute("href"));
     // console.log(a)
 
     if(a.includes("stackoverflow.com") && !a.includes("webcache")){
       //creates a new image element with a checkmark icon
-      var x = document.createElement("IMG");
-          x.setAttribute("src", "http://www.clker.com/cliparts/e/3/9/7/1245686792938124914raemi_Check_mark.svg.hi.png");
-          x.setAttribute("width", "25");
-          x.setAttribute("height", "25");
-          x.setAttribute("alt", "This is a Checkmark");
-          theElement.appendChild(x);
+
         //replaces the element value
         //theElement.href = "lel";
         console.log("=========================================================");
-        makeARequest(a);
-        // break;
-        // //make request with the stackoverflow link
-        // var request = makeHttpObject();
-        // request.open("GET", a, true);
-        // request.send(null);
-        // request.onreadystatechange = function() {
-        //   if (request.readyState == 4){
-        //     // console.log(request.responseText);
-        //     var stackOvr = request.responseText;
-        //     console.log("RESPONSE: ", stackOvr);
-        //
-        //     console.log("=========================================================");
-        //   }
-        // };
+        makeARequest(a, theElement);
     }
 }
 
-function makeARequest(url){
+function makeARequest(url, anElement){
   //a link that has stackoverflow in it
   console.log("STACK OVERFLOW LINK: ",url);
 
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", a, true);
+  xhr.open("GET", url, true);
   xhr.onload = function (e) {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
@@ -61,7 +38,7 @@ function makeARequest(url){
         // console.log(xhr.responseText);
         //create DOM from text
         // console.log(frag);
-        getData(xhr.responseText);
+        getData(xhr.responseText, anElement);
 
         console.log("=========================================================");
       } else {
@@ -75,29 +52,28 @@ function makeARequest(url){
   xhr.send(null);
 }
 
-function getData(theResponse){
+function getData(theResponse, anElement){
 
   //create DOM
   let doc = new DOMParser().parseFromString(theResponse, 'text/html');
   let div = doc.body.firstChild;
 
-  //gets div based on the class name
+  //gets the div of the accepted answer
   let divs = doc.body.getElementsByClassName('answer accepted-answer');
 
   // console.log(divs);
 
   //if a link finds the answer accepted-answer class then that means that the link
   //does have a solution
-  for (var i=0, max=divs.length; i < max; i++) {
-      // Do something with the element here
-      // console.log(all[i]);
-      // console.log(all[i].getAttribute("href"));
-      let theElement = divs[i];
-      //shows the div for the selected answer
-      console.log(theElement);
-      // let a = String(all[i].getAttribute("class"));
-      // console.log(a)
-    }
+  if(divs.length){
+    var x = document.createElement("IMG");
+        x.setAttribute("src", "http://www.clker.com/cliparts/e/3/9/7/1245686792938124914raemi_Check_mark.svg.hi.png");
+        x.setAttribute("width", "25");
+        x.setAttribute("height", "25");
+        x.setAttribute("alt", "This is a Checkmark");
+        anElement.appendChild(x);
+  }else{
+  }
 }
 
 //makes request
