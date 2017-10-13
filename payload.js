@@ -1,4 +1,4 @@
-//ToDo: pass in the element, if it is good, append the picture
+
 
 // send the page title as a chrome message
 chrome.runtime.sendMessage(document.title);
