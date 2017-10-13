@@ -16,7 +16,8 @@ for (var i=0, max=all.length; i < max; i++) {
     let a = String(all[i].getAttribute("href"));
     // console.log(a)
 
-    if(a.includes("stackoverflow.com") && !a.includes("webcache")){
+    //to look for all stackoverflow and stackexchange websites
+    if((a.includes("stackoverflow")  || a.includes("stackexchange")) && !a.includes("webcache")){
       //creates a new image element with a checkmark icon
 
         //replaces the element value
