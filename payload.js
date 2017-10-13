@@ -1,4 +1,5 @@
-
+//TODO: look through github issues
+//TODO: be able to recognize all stack pages(or most)
 
 // send the page title as a chrome message
 chrome.runtime.sendMessage(document.title);
@@ -65,9 +66,11 @@ function getData(theResponse, anElement){
 
   //if a link finds the answer accepted-answer class then that means that the link
   //does have a solution
+let anImg = chrome.extension.getURL('/images/checkMark.png');
+// console.log(anImg);
   if(divs.length){
     var x = document.createElement("IMG");
-        x.setAttribute("src", "http://www.clker.com/cliparts/e/3/9/7/1245686792938124914raemi_Check_mark.svg.hi.png");
+        x.setAttribute("src", anImg);
         x.setAttribute("width", "25");
         x.setAttribute("height", "25");
         x.setAttribute("alt", "This is a Checkmark");
