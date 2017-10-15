@@ -7,10 +7,18 @@
 
 chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   if (changeInfo.status == 'complete' && tab.active) {
-		console.log(tab.url);
-		chrome.extension.getBackgroundPage().chrome.tabs.executeScript(null, {
-			file: 'payload.js'
-		});
+
+		//makes sure that the extension is only triggered if it is base dona google search
+
+		if(tab.url.includes("https://www.google.com/search?")){
+			chrome.extension.getBackgroundPage().chrome.tabs.executeScript(null, {
+				file: 'payload.js'
+			});
+
+		}
+
+		else{//it's not a google search
+		}
   }
 })
 
