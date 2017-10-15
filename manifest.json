@@ -6,7 +6,6 @@
 	"version": "1.0",
 	"author": "Salvador Hernandez",
 	"web_accessible_resources": ["/images/checkMark.png"],
-
 	"background": {
 		"scripts": ["popup.js"],
 		"persistent": true
