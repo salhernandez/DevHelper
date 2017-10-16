@@ -2,7 +2,7 @@
 //TODO: be able to recognize all stack pages(or most)
 
 // send the page title as a chrome message
-chrome.runtime.sendMessage(document.title);
+// chrome.runtime.sendMessage(document.title);
 // console.log(document);
 
 //get all the tags
@@ -22,7 +22,7 @@ for (var i=0, max=all.length; i < max; i++) {
 
         //replaces the element value
         //theElement.href = "lel";
-        console.log("=========================================================");
+        // console.log("=========================================================");
         makeARequest(a, theElement);
     }
 }
@@ -42,14 +42,14 @@ function makeARequest(url, anElement){
         // console.log(frag);
         getData(xhr.responseText, anElement);
 
-        console.log("=========================================================");
+        // console.log("=========================================================");
       } else {
-        console.error(xhr.statusText);
+        // console.error(xhr.statusText);
       }
     }
   };
   xhr.onerror = function (e) {
-    console.error(xhr.statusText);
+    // console.error(xhr.statusText);
   };
   xhr.send(null);
 }
