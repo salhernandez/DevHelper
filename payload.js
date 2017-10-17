@@ -72,8 +72,8 @@ let anImg = chrome.extension.getURL('/images/checkMark.png');
   if(divs.length){
     var x = document.createElement("IMG");
         x.setAttribute("src", anImg);
-        x.setAttribute("width", "25");
-        x.setAttribute("height", "25");
+        x.setAttribute("width", "15");
+        x.setAttribute("height", "15");
         x.setAttribute("alt", "This is a Checkmark");
         anElement.appendChild(x);
   }else{
