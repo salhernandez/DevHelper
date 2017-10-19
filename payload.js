@@ -17,13 +17,18 @@ for (var i=0, max=all.length; i < max; i++) {
     // console.log(a)
 
     //to look for all stackoverflow and stackexchange websites
-    if((a.includes("stackoverflow")  || a.includes("stackexchange")) && !a.includes("webcache")){
       //creates a new image element with a checkmark icon
+      if((a.includes("stackoverflow")  || a.includes("stackexchange")) && !a.includes("webcache")){
 
         //replaces the element value
         //theElement.href = "lel";
         // console.log("=========================================================");
         makeARequest(a, theElement);
+    }
+
+    //for github issues link
+    else if(a.includes("github") && a.includes("/issues")){
+      console.log("it's a github issues link!");
     }
 }
 
