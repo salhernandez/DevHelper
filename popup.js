@@ -32,5 +32,13 @@ var a=0;
 function count() {
     a++;
     document.getElementById('demo').textContent = a;
+
+    if(document.getElementById('do-count').className == "on") {
+              document.getElementById('do-count').className="off";
+           } else {
+              document.getElementById('do-count').className="on";
+           }
+
 }
+
 document.getElementById('do-count').onclick = count;
