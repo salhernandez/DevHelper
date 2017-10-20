@@ -28,6 +28,8 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   }
 })
 
+
+//UI related code
 var a=0;
 function count() {
     a++;
