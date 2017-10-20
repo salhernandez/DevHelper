@@ -27,3 +27,27 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
 		}
   }
 })
+
+
+//UI related code
+function doSwitchOnStack() {
+
+    //turn off
+    if(document.getElementById('stack-overflow-button').className == "on") {
+            document.getElementById('stack-overflow-button').className="off";
+    } else {//turn on
+              document.getElementById('stack-overflow-button').className="on";
+    }
+}
+
+function doSwitchOnGitHub() {
+  //turn off
+    if(document.getElementById('github-button').className == "on") {
+            document.getElementById('github-button').className="off";
+    } else {//turn on
+              document.getElementById('github-button').className="on";
+    }
+}
+
+document.getElementById('stack-overflow-button').onclick = doSwitchOnStack
+document.getElementById('github-button').onclick = doSwitchOnGitHub

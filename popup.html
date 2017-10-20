@@ -1,13 +1,28 @@
 <!doctype html>
+<!-- No javascript can be done inline the html for chrome extensions -->
 <html>
 
 <head>
 	<title>Hello World Extension</title>
-	<script src="popup.js"></script>
+
+	<!-- define on/off styles -->
+     <style type="text/css">
+      .on  { background: #1DE9B6; }
+      .off { background: #EF5350; }
+     </style>
 </head>
 
 <body>
-	<h3>Hello World Example!</h1>
-    <p id='pagetitle'>This should change to the scraped title!</p>
+	<h1>Pro Googler</h1>
+
+	<span>
+		<p>Stack Overflow</p>
+		<button type="button" id="stack-overflow-button" class="on">Count</button>
+	</span>
+	<span>
+		<p>GitHub</p>
+		<button type="button" id="github-button" class="on">Count</button>
+	</span>
+<script src="popup.js"></script>
 </body>
 </html>

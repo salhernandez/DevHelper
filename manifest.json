@@ -14,10 +14,11 @@
 	"permissions": [
         "tabs",
         "http://*/",
-        "https://*/"
+        "https://*/",
+				"storage"
     ],
 	"browser_action": {
-		"default_icon": "logo.png",
+		"default_icon": "images/greenStack.png",
 		"default_popup": "popup.html"
 	}
 }
