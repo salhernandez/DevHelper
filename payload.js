@@ -5,31 +5,24 @@
 // chrome.runtime.sendMessage(document.title);
 // console.log(document);
 
-//get all the tags
-var all = document.getElementsByTagName("a");
+//get all a tags
+var aTags = document.getElementsByTagName("a");
 // console.log(all);
 
 //cycle through all tags
-for (var i=0, max=all.length; i < max; i++) {
+for (var i=0, max=aTags.length; i < max; i++) {
 
-    let theElement = all[i];
-    let a = String(all[i].getAttribute("href"));
-    // console.log(a)
-
+    let anElement = aTags[i];
+    let aLink = String(aTags[i].getAttribute("href"));
     //to look for all stackoverflow and stackexchange websites
       //creates a new image element with a checkmark icon
-      if((a.includes("stackoverflow")  || a.includes("stackexchange")) && !a.includes("webcache")){
-
-        //replaces the element value
-        //theElement.href = "lel";
-        // console.log("=========================================================");
-        makeARequest(a, theElement);
+      if((aLink.includes("stackoverflow")  || aLink.includes("stackexchange")) && !aLink.includes("webcache")){
+        makeARequest(aLink, anElement);
     }
-
     //for github issues link
-    else if(a.includes("github") && a.includes("/issues")){
+    else if(aLink.includes("github") && aLink.includes("/issues")){
       console.log("it's a github issues link!");
-      makeGithubRequest(a, theElement);
+      makeGithubRequest(aLink, anElement);
     }
 }
 
