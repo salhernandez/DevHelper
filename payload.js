@@ -27,8 +27,8 @@ for (var i=0, max=aTags.length; i < max; i++) {
 }
 
 function makeGithubRequest(url, anElement){
-  //a link that has stackoverflow in it
-  console.log("GitHub LINK: ",url);
+  //a link that has gihub in it
+  // console.log("GitHub LINK: ",url);
 
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url, true);
@@ -36,7 +36,6 @@ function makeGithubRequest(url, anElement){
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         getGitHubData(xhr.responseText, anElement);
-        // console.log("=========================================================");
       } else {
         // console.error(xhr.statusText);
       }
