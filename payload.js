@@ -21,7 +21,7 @@ for (var i=0, max=aTags.length; i < max; i++) {
     }
     //for github issues link
     else if(aLink.includes("github") && aLink.includes("/issues")){
-      console.log("it's a github issues link!");
+      // console.log("it's a github issues link!");
       makeGithubRequest(aLink, anElement);
     }
 }
@@ -49,7 +49,7 @@ function makeGithubRequest(url, anElement){
 
 function makeARequest(url, anElement){
   //a link that has stackoverflow in it
-  console.log("STACK OVERFLOW LINK: ",url);
+  // console.log("STACK OVERFLOW LINK: ",url);
 
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url, true);
