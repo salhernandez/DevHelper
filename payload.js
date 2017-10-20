@@ -56,13 +56,7 @@ function makeARequest(url, anElement){
   xhr.onload = function (e) {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        // console.log(xhr.responseText);
-        // console.log(xhr.responseText);
-        //create DOM from text
-        // console.log(frag);
         getData(xhr.responseText, anElement);
-
-        // console.log("=========================================================");
       } else {
         // console.error(xhr.statusText);
       }
