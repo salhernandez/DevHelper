@@ -5,6 +5,12 @@
 // 	});
 // });
 
+//
+// // Listen to messages from the payload.js script and write to popout.html
+// chrome.runtime.onMessage.addListener(function (message) {
+// 	document.getElementById('pagetitle').innerHTML = message;
+// });
+
 chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   if (changeInfo.status == 'complete' && tab.active) {
 
@@ -21,8 +27,3 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
 		}
   }
 })
-
-// Listen to messages from the payload.js script and write to popout.html
-chrome.runtime.onMessage.addListener(function (message) {
-	document.getElementById('pagetitle').innerHTML = message;
-});
