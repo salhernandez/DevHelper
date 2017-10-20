@@ -30,17 +30,21 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
 
 
 //UI related code
-var a=0;
-function count() {
-    a++;
-    document.getElementById('demo').textContent = a;
-
-    if(document.getElementById('do-count').className == "on") {
-              document.getElementById('do-count').className="off";
-           } else {
-              document.getElementById('do-count').className="on";
-           }
-
+function doSwitchOnStack() {
+    if(document.getElementById('stack-overflow-button').className == "on") {
+            document.getElementById('stack-overflow-button').className="off";
+    } else {
+              document.getElementById('stack-overflow-button').className="on";
+    }
 }
 
-document.getElementById('do-count').onclick = count;
+function doSwitchOnGitHub() {
+    if(document.getElementById('github-button').className == "on") {
+            document.getElementById('github-button').className="off";
+    } else {
+              document.getElementById('github-button').className="on";
+    }
+}
+
+document.getElementById('stack-overflow-button').onclick = doSwitchOnStack
+document.getElementById('github-button').onclick = doSwitchOnGitHub
