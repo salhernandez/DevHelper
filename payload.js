@@ -56,7 +56,7 @@ function makeARequest(url, anElement){
   xhr.onload = function (e) {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
-        getData(xhr.responseText, anElement);
+        getStackOverflowData(xhr.responseText, anElement);
       } else {
         // console.error(xhr.statusText);
       }
@@ -69,7 +69,6 @@ function makeARequest(url, anElement){
 }
 
 function getGitHubData(theResponse, anElement){
-
   //create DOM
   let doc = new DOMParser().parseFromString(theResponse, 'text/html');
   let div = doc.body.firstChild;
@@ -94,7 +93,7 @@ let anImg = chrome.extension.getURL('/images/checkMark.png');
   }
 }
 
-function getData(theResponse, anElement){
+function getStackOverflowData(theResponse, anElement){
 
   //create DOM
   let doc = new DOMParser().parseFromString(theResponse, 'text/html');
