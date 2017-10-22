@@ -33,35 +33,24 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
 
 //UI related code
 function doSwitchOnStack() {
-  // Save it using the Chrome extension storage API.
-  storage.set({'options': "on"}, function() {
-    // Notify that we saved.
-    alert("Settings saved");
-  });
-
     //turn off
     if(document.getElementById('stack-overflow-button').className == "on") {
             document.getElementById('stack-overflow-button').className="off";
+            updateData("stackOverflow", false);
     } else {//turn on
               document.getElementById('stack-overflow-button').className="on";
+              updateData("stackOverflow", true);
     }
 }
 
 function doSwitchOnGitHub() {
-  storage.get('options', function(items) {
-    // To avoid checking items.css we could specify storage.get({css: ''}) to
-    // return a default value of '' if there is no css value yet.
-    if (items.options) {
-      // textarea.value = items.css;
-      alert("Loaded saved options: "+items.options);
-    }
-  });
-
   //turn off
     if(document.getElementById('github-button').className == "on") {
             document.getElementById('github-button').className="off";
+            updateData("GitHub", false);
     } else {//turn on
               document.getElementById('github-button').className="on";
+              updateData("GitHub", true);
     }
 }
 
@@ -69,7 +58,40 @@ document.getElementById('stack-overflow-button').onclick = doSwitchOnStack
 document.getElementById('github-button').onclick = doSwitchOnGitHub
 
 //aruments, what to update, value
+//saved using chrome extenion API
 function updateData(uType, uValue){
   /*Grab Value. Update the needed header, set the values again
   */
+  let tempOptions = {};
+  storage.get('options', function(items) {
+    if (items.options) {
+      // textarea.value = items.css;
+      alert("Loaded saved options: ");
+      //store options object
+      tempOptions = items.options;
+
+      //update value
+      tempOptions.userOptions[uType] = uValue;
+
+      //set value
+      storage.set({'options': tempOptions}, function() {
+        // Notify that we saved.
+        alert("Settings saved with updates: "+uType+" to "+uValue);
+      });
+    }
+    else{
+      let anObject = {
+      userOptions: {
+        stackOverflow: false,
+        GitHub: false
+      }
+    }
+  }
+    //set value
+    storage.set({'options': anObject}, function() {
+      // Notify that we saved.
+      alert("Settings saved");
+    });
+
+  });
 }
