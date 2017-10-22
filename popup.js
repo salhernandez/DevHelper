@@ -48,6 +48,15 @@ function doSwitchOnStack() {
 }
 
 function doSwitchOnGitHub() {
+  storage.get('options', function(items) {
+    // To avoid checking items.css we could specify storage.get({css: ''}) to
+    // return a default value of '' if there is no css value yet.
+    if (items.options) {
+      // textarea.value = items.css;
+      alert("Loaded saved options: "+items.options);
+    }
+  });
+
   //turn off
     if(document.getElementById('github-button').className == "on") {
             document.getElementById('github-button').className="off";
