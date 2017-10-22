@@ -11,6 +11,8 @@
 // 	document.getElementById('pagetitle').innerHTML = message;
 // });
 
+var storage = chrome.storage.local;
+
 chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   if (changeInfo.status == 'complete' && tab.active) {
 
@@ -31,6 +33,11 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
 
 //UI related code
 function doSwitchOnStack() {
+  // Save it using the Chrome extension storage API.
+  storage.set({'options': "on"}, function() {
+    // Notify that we saved.
+    alert("Settings saved");
+  });
 
     //turn off
     if(document.getElementById('stack-overflow-button').className == "on") {
