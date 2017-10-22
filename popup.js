@@ -67,3 +67,9 @@ function doSwitchOnGitHub() {
 
 document.getElementById('stack-overflow-button').onclick = doSwitchOnStack
 document.getElementById('github-button').onclick = doSwitchOnGitHub
+
+//aruments, what to update, value
+function updateData(uType, uValue){
+  /*Grab Value. Update the needed header, set the values again
+  */
+}
