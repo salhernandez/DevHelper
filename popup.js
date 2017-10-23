@@ -66,7 +66,7 @@ function updateData(uType, uValue){
   storage.get('options', function(items) {
     if (items.options) {
       // textarea.value = items.css;
-      alert("Loaded saved options: ");
+      // alert("Loaded saved options: ");
       //store options object
       tempOptions = items.options;
 
@@ -76,7 +76,7 @@ function updateData(uType, uValue){
       //set value
       storage.set({'options': tempOptions}, function() {
         // Notify that we saved.
-        alert("Settings saved with updates: "+uType+" to "+uValue);
+        // alert("Settings saved with updates: "+uType+" to "+uValue);
       });
     }
     else{
@@ -90,7 +90,7 @@ function updateData(uType, uValue){
     //set value
     storage.set({'options': anObject}, function() {
       // Notify that we saved.
-      alert("Settings saved");
+      // alert("Settings saved");
     });
 
   });
