@@ -13,6 +13,11 @@
 
 var storage = chrome.storage.local;
 
+//when the extension opens
+window.addEventListener('load', function (evt) {
+  changeUI();
+});
+
 chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   if (changeInfo.status == 'complete' && tab.active) {
 
@@ -93,5 +98,24 @@ function updateData(uType, uValue){
       // alert("Settings saved");
     });
 
+  });
+}
+
+function changeUI(){
+  storage.get('options', function(items) {
+    if (items.options) {
+
+      if(items.options.userOptions.stackOverflow) {
+              document.getElementById('stack-overflow-button').className="on";
+      } else {//turn on
+                document.getElementById('stack-overflow-button').className="off";
+      }
+
+      if(items.options.userOptions.GitHub) {
+              document.getElementById('github-button').className="on";
+      } else {//turn on
+                document.getElementById('github-button').className="off";
+      }
+    }
   });
 }
