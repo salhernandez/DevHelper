@@ -5,39 +5,23 @@
 //get all a tags
 var aTags = document.getElementsByTagName("a");
 // console.log(all);
-var storage = chrome.storage.local;
 
-storage.get('options', function(items) {
-  if (items.options) {
-    let stackOption = items.options.userOptions.stackOverflow;
-    let githubOption = items.options.userOptions.GitHub;
+//cycle through all tags
+for (var i=0, max=aTags.length; i < max; i++) {
 
-    //cycle through all tags
-    for (var i=0, max=aTags.length; i < max; i++) {
-
-        let anElement = aTags[i];
-        let aLink = String(aTags[i].getAttribute("href"));
-        //to look for all stackoverflow and stackexchange websites
-          //creates a new image element with a checkmark icon
-          if((aLink.includes("stackoverflow")  || aLink.includes("stackexchange")) && !aLink.includes("webcache")){
-
-            //if the user wants to show check stack overflow links
-            if(stackOption){
-            makeARequest(aLink, anElement);
-          }
-
-        }
-        //for github issues link
-        else if(aLink.includes("github") && aLink.includes("/issues")){
-
-          //if the user wants to show check github links
-          if(githubOption){
-            makeGithubRequest(aLink, anElement);
-          }
-        }
+    let anElement = aTags[i];
+    let aLink = String(aTags[i].getAttribute("href"));
+    //to look for all stackoverflow and stackexchange websites
+      //creates a new image element with a checkmark icon
+      if((aLink.includes("stackoverflow")  || aLink.includes("stackexchange")) && !aLink.includes("webcache")){
+        makeARequest(aLink, anElement);
     }
-  }
-});
+    //for github issues link
+    else if(aLink.includes("github") && aLink.includes("/issues")){
+      // console.log("it's a github issues link!");
+      makeGithubRequest(aLink, anElement);
+    }
+}
 
 function makeGithubRequest(url, anElement){
   //a link that has gihub in it
