@@ -38,9 +38,11 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
 
 //UI related code
 function doSwitchOnStack() {
+  let stackButton = document.getElementById('stack-overflow-button');
     //turn off
-    if(document.getElementById('stack-overflow-button').className == "on") {
-            document.getElementById('stack-overflow-button').className="off";
+    if(stackButton.className == "on") {
+            stackButton.className="off";
+            stackButton.innerHTML = "off";
             updateData("stackOverflow", false);
     } else {//turn on
               document.getElementById('stack-overflow-button').className="on";
@@ -107,13 +109,14 @@ function changeUI(){
 
       if(items.options.userOptions.stackOverflow) {
               document.getElementById('stack-overflow-button').className="on";
-      } else {//turn on
+              ocument.getElementById(button_id).innerHTML = 'Lock';
+      } else {
                 document.getElementById('stack-overflow-button').className="off";
       }
 
       if(items.options.userOptions.GitHub) {
               document.getElementById('github-button').className="on";
-      } else {//turn on
+      } else {
                 document.getElementById('github-button').className="off";
       }
     }
