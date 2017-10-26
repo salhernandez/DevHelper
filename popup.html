@@ -3,35 +3,51 @@
 <html>
 
 <head>
-	<title>Hello World Extension</title>
-
+	<title>Dev Helper Extension</title>
 	<!-- define on/off styles -->
      <style type="text/css">
-		 body{
-			 min-width:200px;
-			 min-height: 100px
-		 }
 
-      .on  { background: #1DE9B6; }
-      .off { background: #EF5350; }
-     </style>
+		 .on  { background: #1DE9B6; }
+		 .off { background: #EF5350; }
+
+		 body{
+			   background: #0F1012;
+			   color: #f9f9f9;
+  		   font-family: 'Open Sans', sans-serif;
+				 font-size: 14px;
+		 }
+			button {
+			  border: none;
+			  border-radius: 40px;
+			  /*background: #292b2e;*/
+			  color: #f9f9f9;
+			  padding: 10px 37px;
+			  margin: 10px 0 20px 60px;
+			}
+
+			table {
+			  width: 100%;
+			  background: #292b2e;
+			  text-align: center;
+			}
+	 </style>
 </head>
 
-<body>
-	<table style="width:100%">
-	  <tr>
-			<h1>Dev Helper</h1>
-	  </tr>
-	  <tr>
-			<td>Stack Overflow</td>
-			<td><button type="button" id="stack-overflow-button" class="on">toggle</button></td>
-	  </tr>
-	  <tr>
-			<td>GitHub</td>
-			<td><button type="button" id="github-button" class="on">toggle</button></td>
-	  </tr>
-</table>
+	<body>
+		<table class="wrapper">
+		  <tr>
+				<h1>Dev Helper</h1>
+		  </tr>
+		  <tr>
+				<td>Stack Overflow</td>
+				<td><button type="button" id="stack-overflow-button" class="on">toggle</button></td>
+		  </tr>
+		  <tr>
+				<td>GitHub</td>
+				<td><button type="button" id="github-button" class="on">toggle</button></td>
+		  </tr>
+		</table>
 
-<script src="popup.js"></script>
-</body>
+		<script src="popup.js"></script>
+	</body>
 </html>
