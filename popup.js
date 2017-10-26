@@ -115,7 +115,6 @@ function changeUI(){
 
       if(items.options.userOptions.stackOverflow) {
               document.getElementById('stack-overflow-button').className="on";
-              ocument.getElementById(button_id).innerHTML = 'Lock';
       } else {
                 document.getElementById('stack-overflow-button').className="off";
       }
