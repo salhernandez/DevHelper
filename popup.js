@@ -29,33 +29,38 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
 			});
 
 		}
-
-		else{//it's not a google search
-		}
   }
 })
 
 
 //UI related code
 function doSwitchOnStack() {
+  let stackButton = document.getElementById('stack-overflow-button');
     //turn off
-    if(document.getElementById('stack-overflow-button').className == "on") {
-            document.getElementById('stack-overflow-button').className="off";
-            updateData("stackOverflow", false);
+    if(stackButton.className == "on") {
+      stackButton.className="off";
+      stackButton.innerHTML = "off";
+      updateData("stackOverflow", false);
+
     } else {//turn on
-              document.getElementById('stack-overflow-button').className="on";
-              updateData("stackOverflow", true);
+      stackButton.className="on";
+      stackButton.innerHTML = "on";
+      updateData("stackOverflow", true);
     }
 }
 
 function doSwitchOnGitHub() {
+  let githubButton = document.getElementById('github-button');
   //turn off
-    if(document.getElementById('github-button').className == "on") {
-            document.getElementById('github-button').className="off";
-            updateData("GitHub", false);
+    if(githubButton.className == "on") {
+      githubButton.className="off";
+      githubButton.innerHTML = "off";
+      updateData("GitHub", false);
+
     } else {//turn on
-              document.getElementById('github-button').className="on";
-              updateData("GitHub", true);
+      githubButton.className="on";
+      githubButton.innerHTML = "on";
+      updateData("GitHub", true);
     }
 }
 
@@ -104,17 +109,24 @@ function updateData(uType, uValue){
 function changeUI(){
   storage.get('options', function(items) {
     if (items.options) {
+      let stackButton = document.getElementById('stack-overflow-button');
+      let githubButton = document.getElementById('github-button');
 
       if(items.options.userOptions.stackOverflow) {
-              document.getElementById('stack-overflow-button').className="on";
-      } else {//turn on
-                document.getElementById('stack-overflow-button').className="off";
+        stackButton.className="on";
+        stackButton.innerHTML="on";
+
+      } else {
+        stackButton.className="off";
+        stackButton.innerHTML="off";
       }
 
       if(items.options.userOptions.GitHub) {
-              document.getElementById('github-button').className="on";
-      } else {//turn on
-                document.getElementById('github-button').className="off";
+        githubButton.className="on";
+        githubButton.innerHTML="on";
+      } else {
+        githubButton.className="off";
+        githubButton.innerHTML="off";
       }
     }
   });
