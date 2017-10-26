@@ -9,7 +9,7 @@
      <style type="text/css">
 		 body{
 			 min-width:200px;
-			 min-height: 200px
+			 min-height: 100px
 		 }
 
       .on  { background: #1DE9B6; }
@@ -18,15 +18,20 @@
 </head>
 
 <body>
-	<h1>Dev Helper</h1>
-	<span>
-		<p>Stack Overflow</p>
-		<button type="button" id="stack-overflow-button" class="on">toggle</button>
-	</span>
-	<span>
-		<p>GitHub</p>
-		<button type="button" id="github-button" class="on">toggle</button>
-	</span>
+	<table style="width:100%">
+	  <tr>
+			<h1>Dev Helper</h1>
+	  </tr>
+	  <tr>
+			<td>Stack Overflow</td>
+			<td><button type="button" id="stack-overflow-button" class="on">toggle</button></td>
+	  </tr>
+	  <tr>
+			<td>GitHub</td>
+			<td><button type="button" id="github-button" class="on">toggle</button></td>
+	  </tr>
+</table>
+
 <script src="popup.js"></script>
 </body>
 </html>
