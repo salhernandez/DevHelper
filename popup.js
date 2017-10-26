@@ -29,9 +29,6 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
 			});
 
 		}
-
-		else{//it's not a google search
-		}
   }
 })
 
