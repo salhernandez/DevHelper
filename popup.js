@@ -53,13 +53,17 @@ function doSwitchOnStack() {
 }
 
 function doSwitchOnGitHub() {
+  let githubButton = document.getElementById('github-button');
   //turn off
-    if(document.getElementById('github-button').className == "on") {
-            document.getElementById('github-button').className="off";
-            updateData("GitHub", false);
+    if(githubButton.className == "on") {
+      githubButton.className="off";
+      githubButton.innerHTML = "off";
+      updateData("GitHub", false);
+
     } else {//turn on
-              document.getElementById('github-button').className="on";
-              updateData("GitHub", true);
+      githubButton.className="on";
+      githubButton.innerHTML = "on";
+      updateData("GitHub", true);
     }
 }
 
