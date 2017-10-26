@@ -112,17 +112,24 @@ function updateData(uType, uValue){
 function changeUI(){
   storage.get('options', function(items) {
     if (items.options) {
+      let stackButton = document.getElementById('stack-overflow-button');
+      let githubButton = document.getElementById('github-button');
 
       if(items.options.userOptions.stackOverflow) {
-              document.getElementById('stack-overflow-button').className="on";
+        stackButton.className="on";
+        stackButton.innerHTML="on";
+
       } else {
-                document.getElementById('stack-overflow-button').className="off";
+        stackButton.className="off";
+        stackButton.innerHTML="off";
       }
 
       if(items.options.userOptions.GitHub) {
-              document.getElementById('github-button').className="on";
+        githubButton.className="on";
+        githubButton.innerHTML="on";
       } else {
-                document.getElementById('github-button').className="off";
+        githubButton.className="off";
+        githubButton.innerHTML="off";
       }
     }
   });
