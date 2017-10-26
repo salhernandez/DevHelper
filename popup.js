@@ -41,12 +41,14 @@ function doSwitchOnStack() {
   let stackButton = document.getElementById('stack-overflow-button');
     //turn off
     if(stackButton.className == "on") {
-            stackButton.className="off";
-            stackButton.innerHTML = "off";
-            updateData("stackOverflow", false);
+      stackButton.className="off";
+      stackButton.innerHTML = "off";
+      updateData("stackOverflow", false);
+
     } else {//turn on
-              document.getElementById('stack-overflow-button').className="on";
-              updateData("stackOverflow", true);
+      stackButton.className="on";
+      stackButton.innerHTML = "on";
+      updateData("stackOverflow", true);
     }
 }
 
