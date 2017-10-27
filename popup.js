@@ -15,12 +15,15 @@ var storage = chrome.storage.local;
 
 //when the extension opens
 window.addEventListener('load', function (evt) {
+  isFreshInstall();
   changeUI();
 });
 
 chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   if (changeInfo.status == 'complete' && tab.active) {
-
+    //checks if its a fresh install or not
+    //if it is, itwill initialize the payload
+    isFreshInstall();
 		//makes sure that the extension is only triggered if it is base dona google search
 
 		if(tab.url.includes("https://www.google.com/search?")){
@@ -39,14 +42,26 @@ function isFreshInstall(){
     //create freshInstall key, and set to false
   //else
     //it exists and its not fresh install
-    // storage.get("freshInstall", function(items){
-    //   if(items.freshInstall === false){
-    //     console.log("not fresh install");
-    //   }
-    //   else{
-    //     console.log("its a fresh install");
-    //   }
-    // });
+    storage.get("freshInstall", function(items){
+
+      //not a fresh install
+      if(items.freshInstall === false){
+      }
+      else{//fresh install
+          chrome.storage.local.set({ "freshInstall": false }, function(){
+            let anObject = {
+              userOptions: {
+                stackOverflow: true,
+                GitHub: true
+              }
+            }
+
+            //set value
+            storage.set({'options': anObject}, function() {
+            });
+          });
+      }
+    });
   }
 
 //UI related code
@@ -105,19 +120,6 @@ function updateData(uType, uValue){
         // alert("Settings saved with updates: "+uType+" to "+uValue);
       });
     }
-    else{
-      let anObject = {
-      userOptions: {
-        stackOverflow: true,
-        GitHub: true
-      }
-    }
-    //set value
-    storage.set({'options': anObject}, function() {
-      // Notify that we saved.
-      // alert("Settings saved");
-    });
-  }
   });
 }
 
