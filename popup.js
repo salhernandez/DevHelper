@@ -92,17 +92,16 @@ function updateData(uType, uValue){
     else{
       let anObject = {
       userOptions: {
-        stackOverflow: false,
-        GitHub: false
+        stackOverflow: true,
+        GitHub: true
       }
     }
-  }
     //set value
     storage.set({'options': anObject}, function() {
       // Notify that we saved.
       // alert("Settings saved");
     });
-
+  }
   });
 }
 
