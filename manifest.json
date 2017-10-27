@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 
-	"name": "GitHub Issues Checker",
-	"description": "A simple page-scraping extension for Chrome",
+	"name": "Dev Helper",
+	"description": "A simple extension that helps devs not waste their time while googling",
 	"version": "1.0",
 	"author": "Salvador Hernandez",
 	"web_accessible_resources": ["/images/checkMark.png"],

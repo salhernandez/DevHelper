@@ -15,12 +15,15 @@ var storage = chrome.storage.local;
 
 //when the extension opens
 window.addEventListener('load', function (evt) {
+  isFreshInstall();
   changeUI();
 });
 
 chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   if (changeInfo.status == 'complete' && tab.active) {
-
+    //checks if its a fresh install or not
+    //if it is, itwill initialize the payload
+    isFreshInstall();
 		//makes sure that the extension is only triggered if it is base dona google search
 
 		if(tab.url.includes("https://www.google.com/search?")){
@@ -32,6 +35,34 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   }
 })
 
+function isFreshInstall(){
+  //check for key
+  //if it doesn't exist
+    //create options payload and set it
+    //create freshInstall key, and set to false
+  //else
+    //it exists and its not fresh install
+    storage.get("freshInstall", function(items){
+
+      //not a fresh install
+      if(items.freshInstall === false){
+      }
+      else{//fresh install
+          chrome.storage.local.set({ "freshInstall": false }, function(){
+            let anObject = {
+              userOptions: {
+                stackOverflow: true,
+                GitHub: true
+              }
+            }
+
+            //set value
+            storage.set({'options': anObject}, function() {
+            });
+          });
+      }
+    });
+  }
 
 //UI related code
 function doSwitchOnStack() {
