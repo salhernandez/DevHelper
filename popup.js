@@ -32,6 +32,22 @@ chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, tab) {
   }
 })
 
+function isFreshInstall(){
+  //check for key
+  //if it doesn't exist
+    //create options payload and set it
+    //create freshInstall key, and set to false
+  //else
+    //it exists and its not fresh install
+    // storage.get("freshInstall", function(items){
+    //   if(items.freshInstall === false){
+    //     console.log("not fresh install");
+    //   }
+    //   else{
+    //     console.log("its a fresh install");
+    //   }
+    // });
+  }
 
 //UI related code
 function doSwitchOnStack() {
