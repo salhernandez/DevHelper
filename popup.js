@@ -105,6 +105,8 @@ function updateData(uType, uValue){
   */
   let tempOptions = {};
   storage.get('options', function(items) {
+
+    //if the object has been created before
     if (items.options) {
       // textarea.value = items.css;
       // alert("Loaded saved options: ");
@@ -120,6 +122,26 @@ function updateData(uType, uValue){
         // alert("Settings saved with updates: "+uType+" to "+uValue);
       });
     }
+
+    //if the object has not been created before
+    else{
+      let anObject =
+      {
+        userOptions: {
+          stackOverflow: true,
+          GitHub: true
+        }
+      }
+
+      //update the object
+      anObject.userOptions[uType] = uValue;
+
+      //set value
+      storage.set({'options': anObject}, function() {
+      // Notify that we saved.
+      // alert("Settings saved");
+    });
+  }
   });
 }
 
