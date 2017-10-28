@@ -15,6 +15,7 @@ storage.get('options', function(items) {
     //cycle through all tags
     for (var i=0, max=aTags.length; i < max; i++) {
 
+
         let anElement = aTags[i];
         let aLink = String(aTags[i].getAttribute("href"));
         //to look for all stackoverflow and stackexchange websites
