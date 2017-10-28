@@ -15,9 +15,9 @@ var storage = chrome.storage.local;
 
 //when the extension opens
 window.addEventListener('load', function (evt) {
-  chrome.extension.getBackgroundPage().chrome.tabs.executeScript(null, {
-    file: 'checkPage.js'
-  });
+  // chrome.extension.getBackgroundPage().chrome.tabs.executeScript(null, {
+  //   file: 'checkPage.js'
+  // });
 
   isFreshInstall();
   changeUI();
