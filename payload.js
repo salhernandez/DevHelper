@@ -31,7 +31,6 @@ storage.get('options', function(items) {
         }
         //for github issues link
         else if(aLink.includes("github.com") && aLink.includes("/issues/")){
-          console.log(aLink)
           //if the user wants to show check github links
           if(githubOption){
             // makeGithubRequest(aLink, anElement);
