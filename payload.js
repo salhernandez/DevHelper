@@ -19,7 +19,6 @@ storage.get('options', function(items) {
         let anElement = aTags[i];
         // let aLink = String(aTags[i].getAttribute("href"));
         let aLink = aTags[i].textContent;
-        console.log("THE TEXT CONTENT: ", aLink);
         //to look for all stackoverflow and stackexchange websites
           //creates a new image element with a checkmark icon
           if((aLink.includes("stackoverflow")  || aLink.includes("stackexchange")) && !aLink.includes("webcache")){
@@ -31,8 +30,8 @@ storage.get('options', function(items) {
 
         }
         //for github issues link
-        else if(aLink.includes("github") && aLink.includes("/issues")){
-
+        else if(aLink.includes("github.com") && aLink.includes("/issues/")){
+          console.log(aLink)
           //if the user wants to show check github links
           if(githubOption){
             // makeGithubRequest(aLink, anElement);
@@ -66,7 +65,7 @@ function makeGithubRequest(url, anElement){
 
 function callGitHubAPI(url, anElement){
   let toks = url.split('/');
-  console.log(toks);
+  // console.log(toks);
 
   //replaces gitub.com with api.github.com
   toks[2] = "api.github.com";
@@ -76,7 +75,7 @@ function callGitHubAPI(url, anElement){
 
   //creates api url
   let APIUrl = toks.join("/");
-  console.log(toks);
+  // console.log(toks);
 
   var xhr = new XMLHttpRequest();
     xhr.open("GET", APIUrl, true);
