@@ -67,27 +67,6 @@ function getProperURL(aURL) {
     return properURL;
 }
 
-function makeGithubRequest(url, anElement){
-  //a link that has gihub in it
-  // console.log("GitHub LINK: ",url);
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", url, true);
-  xhr.onload = function (e) {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        getGitHubData(xhr.responseText, anElement);
-      } else {
-        // console.error(xhr.statusText);
-      }
-    }
-  };
-  xhr.onerror = function (e) {
-    // console.error(xhr.statusText);
-  };
-  xhr.send(null);
-}
-
 function callGitHubAPI(url, anElement){
   let toks = url.split('/');
   // console.log(toks);
@@ -157,31 +136,6 @@ function makeARequest(url, anElement){
     // console.error(xhr.statusText);
   };
   xhr.send(null);
-}
-
-function getGitHubData(theResponse, anElement){
-  //create DOM
-  let doc = new DOMParser().parseFromString(theResponse, 'text/html');
-  let div = doc.body.firstChild;
-
-  //gets the div of the accepted answer
-  let divs = doc.body.getElementsByClassName('State State--red');
-
-  // console.log(divs);
-
-  //if a link finds the answer accepted-answer class then that means that the link
-  //does have a solution
-let anImg = chrome.extension.getURL('/images/checkMark.png');
-// console.log(anImg);
-  if(divs.length){
-    var x = document.createElement("IMG");
-        x.setAttribute("src", anImg);
-        x.setAttribute("width", "15");
-        x.setAttribute("height", "15");
-        x.setAttribute("alt", "This is a Checkmark");
-        anElement.appendChild(x);
-  }else{
-  }
 }
 
 function getStackOverflowData(theResponse, anElement){
