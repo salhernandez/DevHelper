@@ -128,7 +128,15 @@ let anImg = chrome.extension.getURL('/images/checkMark.png');
         x.setAttribute("width", "15");
         x.setAttribute("height", "15");
         x.setAttribute("alt", "This is a Checkmark");
+
         anElement.appendChild(x);
+
+    // //testing
+    // var h = document.createElement("body");
+    // var t = document.createTextNode("78");
+    // h.appendChild(t);
+    // anElement.appendChild(t);
+
   }else{
   }
 }
