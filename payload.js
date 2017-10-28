@@ -3,7 +3,7 @@
 // console.log(document);
 
 //get all a tags
-var aTags = document.getElementsByTagName("cite");
+var aTags = document.getElementsByTagName("a");
 // console.log(all);
 var storage = chrome.storage.local;
 
@@ -17,11 +17,22 @@ storage.get('options', function(items) {
 
 
         let anElement = aTags[i];
-        // let aLink = String(aTags[i].getAttribute("href"));
-        let aLink = aTags[i].textContent;
+        let aLink = String(aTags[i].getAttribute("href"));
+        // let aLink = aTags[i].textContent;
+
+        // if the url has a local reference
+        // clean it up and give the proper one back
+        if (aLink.includes('/url?') && aLink.includes('%')) {
+          console.log("hmm");
+          let tempLink = getProperURL(aLink);
+          if(tempLink !== null){
+            aLink = tempLink;
+          }
+        }
+
         //to look for all stackoverflow and stackexchange websites
           //creates a new image element with a checkmark icon
-          if((aLink.includes("stackoverflow")  || aLink.includes("stackexchange")) && !aLink.includes("webcache")){
+          if((aLink.includes("stackoverflow")  || aLink.includes("stackexchange")) && !aLink.includes("cache")){
 
             //if the user wants to show check stack overflow links
             if(stackOption){
@@ -30,7 +41,7 @@ storage.get('options', function(items) {
 
         }
         //for github issues link
-        else if(aLink.includes("github.com") && aLink.includes("/issues/")){
+        else if(aLink.includes("github.com") && aLink.includes("/issues/") && !aLink.includes("cache")){
           //if the user wants to show check github links
           if(githubOption){
             // makeGithubRequest(aLink, anElement);
@@ -40,6 +51,21 @@ storage.get('options', function(items) {
     }
   }
 });
+
+function getProperURL(aURL) {
+  let properURL = null;
+    let toks = aURL.split('=');
+    for (let i = 0, max = toks.length; i < max; i++) {
+      //get token that contains https
+      if (toks[i].includes('https')) {
+        //decode URL
+        let uri_dec = decodeURIComponent(toks[i]);
+        let uri_dec_token = uri_dec.split('&');
+        properURL = uri_dec_token[0];
+      }
+    }
+    return properURL;
+}
 
 function makeGithubRequest(url, anElement){
   //a link that has gihub in it
