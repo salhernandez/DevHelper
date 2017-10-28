@@ -3,7 +3,7 @@
 // console.log(document);
 
 //get all a tags
-var aTags = document.getElementsByTagName("a");
+var aTags = document.getElementsByTagName("cite");
 // console.log(all);
 var storage = chrome.storage.local;
 
@@ -17,7 +17,9 @@ storage.get('options', function(items) {
 
 
         let anElement = aTags[i];
-        let aLink = String(aTags[i].getAttribute("href"));
+        // let aLink = String(aTags[i].getAttribute("href"));
+        let aLink = aTags[i].textContent;
+        console.log("THE TEXT CONTENT: ", aLink);
         //to look for all stackoverflow and stackexchange websites
           //creates a new image element with a checkmark icon
           if((aLink.includes("stackoverflow")  || aLink.includes("stackexchange")) && !aLink.includes("webcache")){
@@ -64,7 +66,7 @@ function makeGithubRequest(url, anElement){
 
 function callGitHubAPI(url, anElement){
   let toks = url.split('/');
-  // console.log(toks);
+  console.log(toks);
 
   //replaces gitub.com with api.github.com
   toks[2] = "api.github.com";
@@ -74,6 +76,7 @@ function callGitHubAPI(url, anElement){
 
   //creates api url
   let APIUrl = toks.join("/");
+  console.log(toks);
 
   var xhr = new XMLHttpRequest();
     xhr.open("GET", APIUrl, true);
