@@ -33,7 +33,8 @@ storage.get('options', function(items) {
 
           //if the user wants to show check github links
           if(githubOption){
-            makeGithubRequest(aLink, anElement);
+            // makeGithubRequest(aLink, anElement);
+            callGitHubAPI(aLink, anElement);
           }
         }
     }
@@ -59,6 +60,55 @@ function makeGithubRequest(url, anElement){
     // console.error(xhr.statusText);
   };
   xhr.send(null);
+}
+
+function callGitHubAPI(url, anElement){
+  let toks = url.split('/');
+  // console.log(toks);
+
+  //replaces gitub.com with api.github.com
+  toks[2] = "api.github.com";
+
+  //insterts "repos" into the third slot
+  toks.splice(3, 0, "repos");
+
+  //creates api url
+  let APIUrl = toks.join("/");
+
+  var xhr = new XMLHttpRequest();
+    xhr.open("GET", APIUrl, true);
+    xhr.onload = function (e) {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          parseGitHubData(xhr.responseText, anElement);
+        } else {
+          // console.error(xhr.statusText);
+        }
+      }
+    };
+    xhr.onerror = function (e) {
+      // console.error(xhr.statusText);
+    };
+    xhr.send(null);
+}
+
+function parseGitHubData(data, anElement){
+  //convert string to JSON
+  jData = JSON.parse(data);
+  //get state of issue
+  if(jData.state === "closed"){
+    // console.log("issue closed");
+    let anImg = chrome.extension.getURL('/images/checkMark.png');
+    let x = document.createElement("IMG");
+        x.setAttribute("src", anImg);
+        x.setAttribute("width", "15");
+        x.setAttribute("height", "15");
+        x.setAttribute("alt", "This is a Checkmark");
+        anElement.appendChild(x);
+  }
+  else{
+    // console.log("issue open");
+  }
 }
 
 function makeARequest(url, anElement){
@@ -128,7 +178,15 @@ let anImg = chrome.extension.getURL('/images/checkMark.png');
         x.setAttribute("width", "15");
         x.setAttribute("height", "15");
         x.setAttribute("alt", "This is a Checkmark");
+
         anElement.appendChild(x);
+
+    // //testing
+    // var h = document.createElement("body");
+    // var t = document.createTextNode("78");
+    // h.appendChild(t);
+    // anElement.appendChild(t);
+
   }else{
   }
 }
