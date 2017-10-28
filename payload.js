@@ -110,6 +110,7 @@ function parseGitHubData(data, anElement){
         x.setAttribute("width", "15");
         x.setAttribute("height", "15");
         x.setAttribute("alt", "This is a Checkmark");
+        x.setAttribute("id", "DevHelperCheckmark");
         anElement.appendChild(x);
   }
   else{
@@ -159,6 +160,7 @@ let anImg = chrome.extension.getURL('/images/checkMark.png');
         x.setAttribute("width", "15");
         x.setAttribute("height", "15");
         x.setAttribute("alt", "This is a Checkmark");
+        x.setAttribute("id", "DevHelperCheckmark");
 
         anElement.appendChild(x);
 
